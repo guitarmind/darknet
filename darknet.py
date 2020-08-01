@@ -185,12 +185,12 @@ load_net.argtypes = [c_char_p, c_char_p, c_int]
 load_net.restype = c_void_p
 
 free_net = lib.free_network
-load_net.argtypes = [POINTER(c_void_p)]
-load_net.restype = c_void_p
+free_net.argtypes = [POINTER(c_void_p)]
+free_net.restype = c_void_p
 
-free_net_ptr = lib.free_network_ptr
-load_net.argtypes = [POINTER(c_void_p)]
-load_net.restype = c_void_p
+# free_net_ptr = lib.free_network_ptr
+# free_net_ptr.argtypes = [POINTER(c_void_p)]
+# free_net_ptr.restype = c_void_p
 
 load_net_custom = lib.load_network_custom
 load_net_custom.argtypes = [c_char_p, c_char_p, c_int, c_int]
