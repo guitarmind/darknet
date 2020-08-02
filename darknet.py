@@ -184,13 +184,8 @@ load_net = lib.load_network
 load_net.argtypes = [c_char_p, c_char_p, c_int]
 load_net.restype = c_void_p
 
-free_net = lib.free_network
-free_net.argtypes = [c_void_p]
-free_net.restype = c_void_p
-
-# free_net_ptr = lib.free_network_ptr
-# free_net_ptr.argtypes = [POINTER(c_void_p)]
-# free_net_ptr.restype = c_void_p
+free_network = lib.free_network
+free_network.argtypes = [c_void_p]
 
 load_net_custom = lib.load_network_custom
 load_net_custom.argtypes = [c_char_p, c_char_p, c_int, c_int]
@@ -232,6 +227,10 @@ network_predict_batch = lib.network_predict_batch
 network_predict_batch.argtypes = [c_void_p, IMAGE, c_int, c_int, c_int,
                                    c_float, c_float, POINTER(c_int), c_int, c_int]
 network_predict_batch.restype = POINTER(DETNUMPAIR)
+
+def free_net(net):
+    free_network(net)
+    return 0
 
 def array_to_image(arr):
     import numpy as np
